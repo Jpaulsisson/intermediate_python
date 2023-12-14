@@ -69,3 +69,50 @@ e5 = Manager("Chelsie")
 # e3.retinal_scan()
 # e4.retinal_scan()
 # e5.retinal_scan()
+
+
+# Multi class
+class Bread:
+  yummy = True
+  def __init__(self, leavened, make_time, color='brown'):
+    self.leavened = leavened
+    self.color = color
+    self.make_time = make_time
+  
+  def addBread(self, *args): 
+    return [args, "Bread"]
+  
+class Sauce:
+  tasty = True
+  def __init__(self, base, make_time, color):
+    self.base = base
+    self.make_time = make_time
+    self.color = color
+
+  def addSauce(self, *args):
+    return [args, "{} sauce".format(self.base)]
+  
+
+class Pizza(Bread, Sauce):
+  best_food = True
+  def __init__(self, thiccness, *toppings):
+    self.thiccness = thiccness
+    self.toppings = [toppings]
+
+classic = Pizza('thin', 'parmigiano', 'basil', 'mozzarella', 'prosciutto')
+
+# print(vars(classic))
+# print([classic.best_food, classic.tasty, classic.yummy])
+
+pizza_dough = Bread(True, 30, 'white')
+marinara = Sauce('tomato', 30, 'red')
+
+# my_pizza = Pizza(pizza_dough, marinara) <---- NO
+# print(vars(my_pizza)) <---- NO
+# print(my_pizza.color) <---- NO
+
+
+  
+  
+  
+  
