@@ -79,7 +79,7 @@ class Bread:
     self.color = color
     self.make_time = make_time
   
-  def addBread(self, *args): 
+  def addToDish(self, *args): 
     return [args, "Bread"]
   
 class Sauce:
@@ -89,7 +89,7 @@ class Sauce:
     self.make_time = make_time
     self.color = color
 
-  def addSauce(self, *args):
+  def addToDish(self, *args):
     return [args, "{} sauce".format(self.base)]
   
 
@@ -98,21 +98,23 @@ class Pizza(Bread, Sauce):
   def __init__(self, thiccness, *toppings):
     self.thiccness = thiccness
     self.toppings = [toppings]
+    
+class Pasta(Sauce, Bread):
+  best_food = True
+  def __init__(self, base, noods, sauce):
+    self.noods = noods
+    self.sauce = sauce
+    self.base = base
 
 classic = Pizza('thin', 'parmigiano', 'basil', 'mozzarella', 'prosciutto')
+classico = Pasta('cream', 'penne', 'carbonara')
 
 # print(vars(classic))
 # print([classic.best_food, classic.tasty, classic.yummy])
 
-pizza_dough = Bread(True, 30, 'white')
-marinara = Sauce('tomato', 30, 'red')
-
-# my_pizza = Pizza(pizza_dough, marinara) <---- NO
-# print(vars(my_pizza)) <---- NO
-# print(my_pizza.color) <---- NO
-
-
-  
+print(classic.addToDish('stuff'))
+print(classico.addToDish('any'))
+# The important difference to note here is that if there are properties with the same name in both inherited classes then the one listed first takes priority. So when Pizza calls addToDish it prints the Bread version, and when Pasta calls the addToDish method it prints the Sauce version. I'm fully aware that this example fell apart by the end but the things I needed to make clear still stand. 
   
   
   
