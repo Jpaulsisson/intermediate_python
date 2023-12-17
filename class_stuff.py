@@ -112,9 +112,27 @@ classico = Pasta('cream', 'penne', 'carbonara')
 # print(vars(classic))
 # print([classic.best_food, classic.tasty, classic.yummy])
 
-print(classic.addToDish('stuff'))
-print(classico.addToDish('any'))
+# print(classic.addToDish('stuff'))
+# print(classico.addToDish('any'))
 # The important difference to note here is that if there are properties with the same name in both inherited classes then the one listed first takes priority. So when Pizza calls addToDish it prints the Bread version, and when Pasta calls the addToDish method it prints the Sauce version. I'm fully aware that this example fell apart by the end but the things I needed to make clear still stand. 
+
+# another cool little diddy here is that you can do this...
+class ThisClass:
+  def the_thing_this_class_does(self):
+    print('this is the thing THIS class does')
+
+class ThatClass:
+  def the_thing_this_class_does(self):
+    print('this is the thing THAT class does')
   
-  
-  
+
+this = ThisClass()
+that = ThatClass()
+
+these = [this, that]
+
+for the_thing in these:
+  the_thing.the_thing_this_class_does()
+# prints:
+# this is the thing THIS class does
+# this is the thing THAT class does
