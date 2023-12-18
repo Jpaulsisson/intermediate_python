@@ -117,3 +117,25 @@ string_titles = filter(lambda book: type(book[1]) == str, books)
 letters = ['r', 'e', 'd', 'u', 'c', 'e']
 word = reduce(lambda x, y: x + y, letters)
 # print(word)
+
+class CustomIterators:
+  def __init__(self, some_list):
+    self.some_list = some_list
+    
+  def __iter__(self):
+    self.index = 0
+    return self
+
+  def __next__(self):
+    if self.index < len(self.some_list):
+      result = self.some_list[self.index]
+      self.index += 2
+      return result
+    else:
+      print('end of loop')
+      raise StopIteration
+    
+skipper = CustomIterators([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+
+for item in skipper:
+  print(item)
