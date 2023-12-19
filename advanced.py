@@ -118,24 +118,34 @@ letters = ['r', 'e', 'd', 'u', 'c', 'e']
 word = reduce(lambda x, y: x + y, letters)
 # print(word)
 
-class CustomIterators:
-  def __init__(self, some_list):
+class CustomIterator1:
+  def __init__(self, some_list, second_list):
     self.some_list = some_list
+    self.second_list = second_list
     
   def __iter__(self):
     self.index = 0
     return self
 
+# This is me being fancy. There's a much cleaner way to accomplish this same goal. It's in CustomIterator2, which is in class_stuff.py
   def __next__(self):
-    if self.index < len(self.some_list):
+    list_1_len = len(self.some_list)
+    list_2_len = len(self.second_list)
+    total_len = list_1_len + list_2_len
+    
+    if self.index < list_1_len:
       result = self.some_list[self.index]
-      self.index += 2
+      self.index += 1
+      return result
+    elif self.index >= list_1_len and self.index < total_len:
+      result = self.second_list[self.index - list_1_len]
+      self.index += 1
       return result
     else:
       print('end of loop')
       raise StopIteration
     
-skipper = CustomIterators([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+to_ten_and_back = CustomIterator1([x for x in range(1, 11)], [y for y in range(9, 0, -1)])
 
-for item in skipper:
+for item in to_ten_and_back:
   print(item)

@@ -1,3 +1,4 @@
+import itertools
 # Working with classes beyond just defining them
 # "self" is the Python version of JavaScript's "this"
 # When referencing a defined class variable such as "new_id" below, 
@@ -85,7 +86,7 @@ class Bread:
 class Sauce:
   tasty = True
   def __init__(self, base, make_time, color):
-    self.base = base
+    self.base = base0
     self.make_time = make_time
     self.color = color
 
@@ -136,3 +137,58 @@ for the_thing in these:
 # prints:
 # this is the thing THIS class does
 # this is the thing THAT class does
+
+class CustomIterator2:
+  pass
+
+
+first_list = [1, 2, 3]
+second_list = ['a', 'b', 'c', 'd']
+third_list = [True, False, True]
+
+a_set = {1, 2, 3}
+a_dict = {1: 'a', 2: 'b', 3: 'c'}
+
+triple_list = [*first_list, *second_list, *third_list]
+chained_list = itertools.chain(first_list, second_list, third_list)
+combo_w_set = [*first_list, *a_set]
+chain_combo_w_set = itertools.chain(first_list, a_set)
+combo_w_dict = [*first_list, *a_dict]
+chain_combo_w_dict = itertools.chain(first_list, a_dict)
+
+# for item in triple_list:
+#   print("triple: ", item)
+
+#  ^^^ vvv these print the same thing 
+
+# for item in chained_list:
+#   print("chain: ", item)
+
+# for item in combo_w_set:
+#   print("set combo: ", item)
+
+#  ^^^ vvv these print the same thing
+
+# for item in chain_combo_w_set:
+#   print("set chain combo: ", item)
+
+# for item in combo_w_dict:
+#   print("dict combo: ", item)
+
+# ^^^ vvv these print the same thing
+
+# for item in chain_combo_w_dict:
+#   print("dict chain combo: ", item)
+
+# Now THIS is powerful
+all_combos = list(itertools.combinations(second_list, 3))
+# prints [('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'd'), ('b', 'c', 'd')]
+# That's freaking cool.
+
+
+
+
+
+
+
+
