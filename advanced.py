@@ -127,7 +127,6 @@ class CustomIterator1:
     self.index = 0
     return self
 
-# This is me being fancy. There's a much cleaner way to accomplish this same goal. It's in CustomIterator2, which is in class_stuff.py
   def __next__(self):
     list_1_len = len(self.some_list)
     list_2_len = len(self.second_list)

@@ -138,10 +138,6 @@ for the_thing in these:
 # this is the thing THIS class does
 # this is the thing THAT class does
 
-class CustomIterator2:
-  pass
-
-
 first_list = [1, 2, 3]
 second_list = ['a', 'b', 'c', 'd']
 third_list = [True, False, True]
