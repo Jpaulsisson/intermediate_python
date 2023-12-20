@@ -181,8 +181,17 @@ all_combos = list(itertools.combinations(second_list, 3))
 # prints [('a', 'b', 'c'), ('a', 'b', 'd'), ('a', 'c', 'd'), ('b', 'c', 'd')]
 # That's freaking cool.
 
+# Python's count built-in is really cool too
+string_of_random_letters = "aiosupdhygaiksjdnbfgaiopsdgjuaisdghoasdioghasasdjkghaisipdugthasdjgbnaisdghasiodghjasodighuiasduh"
 
-
+# prints 13
+print(string_of_random_letters.count('a'))
+# prints 11
+print(string_of_random_letters.count('g'))
+# prints 3
+print(string_of_random_letters.count('p'))
+# prints 2
+print(string_of_random_letters.count('n'))
 
 
 
