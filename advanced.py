@@ -146,5 +146,37 @@ class CustomIterator1:
     
 to_ten_and_back = CustomIterator1([x for x in range(1, 11)], [y for y in range(9, 0, -1)])
 
-for item in to_ten_and_back:
+# for item in to_ten_and_back:
+#   print(item)
+  
+
+# list comprehension
+# This is a list from 0 to 10
+comp_list = [x for x in range(0, 11)]
+comp_list_5 = comp_list[5]
+print(comp_list)
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(comp_list_5)
+# 5
+
+# generator comprehension
+# this is a generator from 0 to 10
+comp_gen = (x for x in range(0, 11))
+# comp_gen_5 = comp_gen[5]  <--- This doesn't work because it's a GENERATOR
+print(comp_gen)
+# <generator object <genexpr> at 0x100471480>
+# BUT we can still do this...
+for item in comp_gen:
   print(item)
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+# 7
+# 8
+# 9
+# 10
+#  this basically works like a linked list. items can only be accessed one at a time using the "next" function. It's basically moving from node to node getting the next value but never storing it. If I understand it like I think I do.

@@ -192,6 +192,8 @@ print(string_of_random_letters.count('g'))
 print(string_of_random_letters.count('p'))
 # prints 2
 print(string_of_random_letters.count('n'))
+# prints 13
+print(string_of_random_letters.count('s'))
 
 
 
