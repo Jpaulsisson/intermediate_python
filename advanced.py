@@ -179,4 +179,4 @@ for item in comp_gen:
 # 8
 # 9
 # 10
-#  this basically works like a linked list. items can only be accessed one at a time using the "next" function. It's basically moving from node to node getting the next value but never storing it. If I understand it like I think I do.
+#  this basically works like a linked list, at least as far as traversing it goes. items can only be accessed one at a time using the "next" function. It's basically moving from node to node getting the next value but never storing it. If I understand it like I think I do.
