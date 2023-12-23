@@ -92,13 +92,6 @@ dictionary_of_sets = {
 
 
 
-my_tags = frozenset(['pop', 'electronic', 'relaxing', 'slow', 'synth'])
-
-print(my_tags)
-
-
-
-
 
 
 
