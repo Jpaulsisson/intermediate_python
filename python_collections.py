@@ -189,15 +189,37 @@ counted_numbers.subtract(more_counted_numbers)
 # Counter({6: 4, 5: 3, 9: 3, 3: 1, 0: 1, 1: -1, 7: -1, 8: -1, 2: -2, 4: -4})
 
 
+## --------------------------
+# Next: UserDict()
+# -- This allows us to create a dictionary with our own defined methods on it.
+# -- I really like the idea of being able to do this
+# --------------------------
+data = {'order_4829': {'type': 't-shirt', 'size': 'large', 'price': 9.99, 'order_status': 'processing'},
+        'order_6184': {'type': 'pants', 'size': 'medium', 'price': 14.99, 'order_status': 'complete'},
+        'order_2905': {'type': 'shoes', 'size': 12, 'price': 22.50, 'order_status': 'complete'},
+        'order_7378': {'type': 'jacket', 'size': 'large', 'price': 24.99, 'order_status': 'processing'}}
 
+class OrderProcessingDict(UserDict):
+  def clean_orders(self):
+    to_be_deleted = []
+    for key, value in self.items():
+      if value['order_status'] == 'complete':
+        to_be_deleted.append(key)
+    for item in to_be_deleted:
+      del self[item]
 
+dict_orders = OrderProcessingDict(data)
 
+for item in dict_orders:
+  print(item)
 
+print('-------------------------')
+print('updating... updating... all completed orders removed!')
+print('-------------------------')
+dict_orders.clean_orders()
 
-
-
-
-
+for item in dict_orders:
+  print(item)
 
 
 
