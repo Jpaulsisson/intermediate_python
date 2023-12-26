@@ -1,4 +1,5 @@
 from collections import *
+import random
 # collections is basically specialized versions of containers
 # so special lists, dictionaries, etc. with special methods
 
@@ -210,22 +211,35 @@ class OrderProcessingDict(UserDict):
 
 dict_orders = OrderProcessingDict(data)
 
-for item in dict_orders:
-  print(item)
+# for item in dict_orders:
+#   print(item)
 
-print('-------------------------')
-print('updating... updating... all completed orders removed!')
-print('-------------------------')
+# print('-------------------------')
+# print('updating... updating... all completed orders removed!')
+# print('-------------------------')
 dict_orders.clean_orders()
 
-for item in dict_orders:
-  print(item)
+# for item in dict_orders:
+#   print(item)
 
+unshuffled = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
-
-
-
-
+class PaulsList(UserList):
+  def shuffle(self):
+    start = 0
+    stop = len(self) - 1
+    for index in range(0, len(self)):
+      random_index = random.randrange(start, stop)
+      temp = self[index]
+      self[index] = self[random_index]
+      self[random_index] = temp
+      
+      
+      
+bout_to_be_shuffled = PaulsList(unshuffled)
+print(bout_to_be_shuffled)
+bout_to_be_shuffled.shuffle()
+print(bout_to_be_shuffled)
 
 
 
