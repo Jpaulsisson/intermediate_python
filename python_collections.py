@@ -4,7 +4,7 @@ import random
 # so special lists, dictionaries, etc. with special methods
 
 # --------------------------------
-# Let's start with deque() -- (I'm pronouncing this "deck", but I feel confident that's not correct)
+# Let's start with deque() -- (I'm pronouncing this "deck", but who knows if that's right)
 # -- This is a list that's optimized for appending and popping from the front or back but not so much for accessing the stuff in the middle
 # --------------------------------
 a_big_list = [x for x in range(1, 123)]
@@ -279,7 +279,7 @@ class BetterString(UserString):
   def __sub__(self, substring):
     # below: this doubles the input value within the string, just to prove we are really changing the functionality of this operator, heavily
     new = super().replace(substring, f'{substring}{substring}') 
-    self.data = new
+    print(new)
     
 better_string = BetterString('better string here')
 better_string.printData()
@@ -287,5 +287,4 @@ better_string.printData()
 better_string.scream()
 # BETTER STRING HERE!
 better_string - 'here'
-print(better_string)
 # better string herehere
