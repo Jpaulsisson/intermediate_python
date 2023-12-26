@@ -190,7 +190,7 @@ counted_numbers.subtract(more_counted_numbers)
 # Counter({6: 4, 5: 3, 9: 3, 3: 1, 0: 1, 1: -1, 7: -1, 8: -1, 2: -2, 4: -4})
 
 
-## --------------------------
+# --------------------------
 # Next: UserDict()
 # -- This allows us to create a dictionary with our own defined methods on it.
 # -- I really like the idea of being able to do this
@@ -201,6 +201,7 @@ data = {'order_4829': {'type': 't-shirt', 'size': 'large', 'price': 9.99, 'order
         'order_7378': {'type': 'jacket', 'size': 'large', 'price': 24.99, 'order_status': 'processing'}}
 
 class OrderProcessingDict(UserDict):
+  
   def clean_orders(self):
     to_be_deleted = []
     for key, value in self.items():
@@ -222,6 +223,12 @@ dict_orders.clean_orders()
 # for item in dict_orders:
 #   print(item)
 
+# --------------------------
+# Next: UserList()
+# -- This allows us to create a list with our own defined methods on it.
+# -- Again, I really like the idea of being able to do this
+# --------------------------
+
 unshuffled = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
 class PaulsList(UserList):
@@ -233,16 +240,52 @@ class PaulsList(UserList):
       temp = self[index]
       self[index] = self[random_index]
       self[random_index] = temp
-      
+    
+  # it should be noted that built-in methods can be overwritten and can be used like so:
+  def append(self, new_value):
+    print(f'I just appended {new_value} to this list!')
+    super().append(new_value)
       
       
 bout_to_be_shuffled = PaulsList(unshuffled)
-print(bout_to_be_shuffled)
+# print(bout_to_be_shuffled)
+# [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 bout_to_be_shuffled.shuffle()
-print(bout_to_be_shuffled)
+# our custom method is called on a perfectly sequential list and...
+# print(bout_to_be_shuffled)
+# [11, 15, 19, 3, 10, 9, 18, 6, 2, 12, 5, 1, 17, 4, 13, 8, 7, 20, 16, 14]... boom goes the dynamite
+# bout_to_be_shuffled.append(21)
+# print(bout_to_be_shuffled)
+# I just appended 21 to this list!
+# [5, 6, 8, 7, 4, 16, 18, 19, 1, 13, 10, 11, 9, 12, 17, 14, 20, 3, 15, 2, 21] <-- it was reshuffled because it ran again
 
+# --------------------------
+# Next: UserString()
+# -- This allows us to create a string with our own defined methods on it.
+# -- Yet again, I really like the idea of being able to do this
+# -- One special note about this class: it has a "data" attribute built-in for easier use
+# --------------------------
 
+class BetterString(UserString):
+  # This shows what the data attribute does
+  def printData(self):
+    print(self.data)
 
-
-
-
+  def scream(self):
+    screamed = self.data.upper() + '!'
+    print(screamed)
+    
+  # we can also overwrite operators like so:  (<-- this changes the "-" operator)
+  def __sub__(self, substring):
+    # below: this doubles the input value within the string, just to prove we are really changing the functionality of this operator, heavily
+    new = super().replace(substring, f'{substring}{substring}') 
+    self.data = new
+    
+better_string = BetterString('better string here')
+better_string.printData()
+# better string here
+better_string.scream()
+# BETTER STRING HERE!
+better_string - 'here'
+print(better_string)
+# better string herehere
